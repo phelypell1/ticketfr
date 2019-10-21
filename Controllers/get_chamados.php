@@ -19,7 +19,7 @@
     if($resultado){
         while($registro = mysqli_fetch_array($resultado)){
             echo '<a href= "">';
-            echo '<form action="get_historico" method="POST"';
+            echo '<form action="" method="GET" ';
                 echo '<hr class="hr-chamado list-group-item-heading">';
                 echo '<small class="date">'.$registro['daten'].'</small>';
                 echo '<h4 class="h4-st" name="id" id="h4-reg"> #'.$registro['idChamado'].' :<small>'.$registro['assunto'].'</small></h4>';

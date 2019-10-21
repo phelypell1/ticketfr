@@ -63,7 +63,13 @@
                 <h4 class="">Chamados em aberto</h4>
                 <hr>
                 <div class="list-group" id="chamados_aberto">
+                    
                     <hr>
+                    <?php
+                    
+
+
+                    ?>
                 </div>
             </div>
             </div>
