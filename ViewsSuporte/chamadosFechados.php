@@ -14,14 +14,13 @@
     <script src="../jquery/jquery-3.4.1.js"></script>
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../PageStyle/styleHome.css">
-    <script src="../scripts/jquery-3.4.1.js"></script>
     <script lang="javascript">
         $(document).ready(function(){
             function atualiza(){
                 $.ajax({
-                    url: '../ControllerSuporte/getListaSuporte.php',
+                    url: '../ControllerSuporte/get_ChamadosFinalizados.php',
                     success: function(data){
-                        $('#lista_aberta').html(data);
+                        $('#chamados_fechados').html(data);
                     }
                 });
             }
@@ -37,15 +36,15 @@
             <div class="dropdown-content">
                 <a href="#"><?=$_SESSION['login']?></a>
                 <hr>
-                <a href="MeusDados.php">Meus dados</a>
+                <a href="#">Meus dados</a>
                 <hr>
                 <a href="#">Alterar senha</a>
                 <hr>
-                <a href="../ViewsSuporte/logoutSuporte.php">Logout</a>
+                <a href="logout.php">Logout</a>
             </div>
         </div>
-        <a href="suporte.php" class="logoImg"><img src="../imagens/home-logo.png" class="imagem-logo" alt=""></a>
-        <button type="button" class="botao" onclick="window.location='suporte.php'">Chamados</button>
+        <a href="../ViewsSuporte/suporte.php" class="logoImg"><img src="../imagens/home-logo.png" class="imagem-logo" alt=""></a>
+        <button type="button" class="botao">Chamados</button>
         <button type="button" class="botao">Equipe</button>
         <input type="search" class="input-form">
         <button class="btnbusca" type="submit"><img src="../imagens/lupa.png" class="lupaconf" alt=""></button>
@@ -53,19 +52,15 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 ">
-                <h4 class="">Chamados</h4>
+                <h4 class="">Chamados Fechados</h4>
                 <hr>
-            <button type="button" id="btn_aberto" class="btnchamados" onclick="window.location='suporte.php'">Chamados em aberto</button>
-            <button type="button" class="btnchamados" onclick="window.location='AtendeChamado.php'">Atendimentos</button>
-            <button type="button" id="btn_fechados" class="btnchamados" onclick="window.location='../ViewsSuporte/chamadosFechados.php'" >Fechados</button>
-            
+            <button type="button" id="btn_aberto" class="btnchamados" onclick="window.location='../ViewsSuporte/suporte.php'">Abertos</button>
             <hr class="hr1">
             </div>
             
             <hr>
             <div class="col-md-12">
                 <br><br>
-            <div class="list-group" id="lista_aberta">
             <div class="list-group" id="chamados_fechados"></div>
             </div>
         </div>

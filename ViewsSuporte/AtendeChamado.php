@@ -1,7 +1,7 @@
 <?php
     session_start();
     if(!isset($_SESSION['login'])){
-        header('Location: login.php?erro=1');
+        header('Location: ../ViewsSuporte/loginSuporte.php?erro=1');
     }
     $cad = isset($_GET['ok']) ? $_GET['ok'] : 0;
 ?>
@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>FRControl</title>
-    <script src="jquery/jquery-3.4.1.js"></script>
+    <script src="../jquery/jquery-3.4.1.js"></script>
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <script src="../bootstrap/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../PageStyle/styleHome.css">
@@ -22,7 +22,7 @@
             $('#btn_acesso').click(function(){
                 if($('#campo_id').val().length > 0 && $('#campo_resolucao').val().length > 0){
                    $.ajax({
-                       url: 'SalvaAtendimento.php',
+                       url: '../ControllerSuporte/SalvaAtendimento.php',
                        method: 'post',
                        data: $('#formulario_atendimento').serialize(),
                        success: function(data){
@@ -32,19 +32,19 @@
             });
         });
     </script>
-      <script lang="javascript">
+          <script lang="javascript">
         $(document).ready(function(){
             $('#btn_acesso').click(function(){
                 if($('#campo_id').val().length > 0 && $('#campo_resolucao').val().length > 0){
                    $.ajax({
-                       url: 'atualizaChamado.php',
+                       url: '../ControllerSuporte/get_AtualizaChamado.php',
                        method: 'post',
                        data: $('#formulario_atendimento').serialize(),
                        success: function(data){
                            $('#campo_id').val('');
                            $('#campo_selection').val('');
                            $('#campo_resolucao').val('');
-                        alert('Atualizado!');
+                        alert('Chamado concluido com sucesso !');
                        }
                    });
                 }
@@ -63,10 +63,10 @@
                 <hr>
                 <a href="#">Alterar senha</a>
                 <hr>
-                <a href="logout.php">Logout</a>
+                <a href="../ViewsSuporte/logoutSuporte.php">Logout</a>
             </div>
         </div>
-        <a href="home.php" class="logoImg"><img src="../imagens/home-logo.png" class="imagem-logo" alt=""></a>
+        <a href="../ViewsSuporte/suporte.php" class="logoImg"><img src="../imagens/home-logo.png" class="imagem-logo" alt=""></a>
         <button type="button" class="botao">Chamados</button>
         <button type="button" class="botao">Equipe</button>
         <input type="search" class="input-form">
@@ -82,29 +82,28 @@
                 <form method="POST" id="formulario_atendimento">
                     <fieldset class="borderchamado">
                         <div class="form-group col-md-12">
-
                             <br>
                             <div class="form-group col-md-0">
                             <label for="">Informe ID do atendimento.</label>
                             <input type="text" class="form-control" id="campo_id" name="campo_id">
                         </div>
                             <label for="">Status Pedido:</label>
-                            <select name="campo_selection" id="campo_selection" class="form-control">
+                            <select name="campo_selecao" id="campo_selecao" class="form-control">
                                 <option value="Selecione">--Selecione--</option>
-                                <option value="Solicita reparo">Fechado</option>
-                                <option value="Solicitação Suporte">Aguardando resposta</option>
-                                <option value="Solicitação troca">Sem equipamento para solicitação</option>
+                                <option value="Fechado">Fechado</option>
+                                <option value="Aguardando resposta">Aguardando resposta</option>
+                                <option value="Sem material para troca">Sem equipamento para solicitação</option>
                             </select>
                         </div>
                         <div class="form-group col-md-12">
                             <label for="">Resposta Atendimento:</label>
                             <textarea name="campo_resolucao" id="campo_resolucao" cols="5" rows="3" class="form-control"></textarea>
                         </div> 
-                       
-                            <button type="button" class="btn-criar-chamado pull-right" id="btn_acesso">Criar Chamado</button>
+                            <button type="button" class="btn-criar-chamado pull-right" id="btn_acesso">Concluir Chamado</button>
                         </div>
                         <br><br>
                     </fieldset>
+                    <br><br>
                 </form>
                 </div>
             </div>
