@@ -1,7 +1,7 @@
 <?php
     session_start();
     if(!isset($_SESSION['login'])){
-        header('Location: ../Viewslogin.php?erro=1');
+        header('Location: ../Views/loginHome.php?erro=1');
     }
 ?>
 <!DOCTYPE html>
