@@ -11,7 +11,7 @@
 
     $sql = "select t.idChamado, t.tipoMensagem, t.assunto, t.descricao,  DATE_FORMAT(t.date_Cad,'%d-%m-%Y') as daten , u.login,  t.status_chamado ";
     $sql.= "from Chamados as t join logins as u on (t.idSolicitante = u.idLogin) ";
-    $sql.= "where status_chamado = 'Fechado' order by status_chamado desc ";
+    $sql.= "where status_chamado = 'Fechado' order by date_Cad desc ";
     
     
     $resultado = mysqli_query($link, $sql);

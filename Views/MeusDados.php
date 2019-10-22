@@ -93,6 +93,7 @@ $cad = isset($_GET['ok']) ? $_GET['ok'] : 0;
                                 }
                             }
                             ?>
+                            </div>
                             <div class="form-group col-md-12">
                                 <button type="button" class="btn btn-primary" id="btnEnvia">Alterar</button>
                             </div>
