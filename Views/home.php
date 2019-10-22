@@ -38,7 +38,7 @@
                 <hr>
                 <a href="MeusDados.php">Meus dados</a>
                 <hr>
-                <a href="#">Alterar senha</a>
+                <a href="../Views/alteraSenha.php">Alterar senha</a>
                 <hr>
                 <a href="../Views/logoutHome.php">Logout</a>
             </div>
@@ -82,5 +82,6 @@
         </div>
 
     </div>
+   
 </body>
 </html>
