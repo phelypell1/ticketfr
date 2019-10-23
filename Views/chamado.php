@@ -4,6 +4,7 @@
         header('Location: ../Views/login.php?erro=1');
     }
     $cad = isset($_GET['ok']) ? $_GET['ok'] : 0;
+    header("Refresh:240");
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">

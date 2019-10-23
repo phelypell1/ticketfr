@@ -1,7 +1,7 @@
 <?php
     session_start();
     if(!isset($_SESSION['login'])){
-        header('location: home.php?erro=1');
+        header('location: ../Views/home.php?erro=1');
     }
 
     require_once('../Connections/Conexao.php');
@@ -12,8 +12,7 @@
 
     $sql = "select t.idChamado, t.tipoMensagem, t.assunto, t.descricao,  DATE_FORMAT(t.date_Cad,'%d-%m-%Y') as daten , u.login,  t.status_chamado ";
     $sql.= "from Chamados as t join logins as u on (t.idSolicitante = u.idLogin) ";
-    $sql.= "where status_chamado ='Aberto' and t.idSolicitante =".$_SESSION['id']." or status_chamado='Aguardando resposta' order by date_cad desc";
-    
+    $sql.= "where status_chamado ='Aberto' and t.idSolicitante =".$_SESSION['id']." or status_chamado='Aguardando resposta' or status_chamado='Sem material para troca' order by date_cad desc";
     $resultado = mysqli_query($link, $sql);
 
     if($resultado){
@@ -28,7 +27,6 @@
                 echo '<hr class="hr-chamado">';
                 echo '</form>';
                 echo '</a>';
-           
         }
     }else{
         echo 'ERROR !'.mysqli_error($link);

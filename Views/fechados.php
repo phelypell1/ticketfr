@@ -3,6 +3,7 @@
     if(!isset($_SESSION['login'])){
         header('Location: ../Views/loginHome.php?erro=1');
     }
+    header("Refresh:240");
 ?>
 <!DOCTYPE html>
 <html lang="en">

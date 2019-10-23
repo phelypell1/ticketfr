@@ -12,7 +12,7 @@
 
     $sql = "select t.idChamado, t.tipoMensagem, t.assunto, t.descricao,  DATE_FORMAT(t.date_Cad,'%d-%m-%Y') as daten , u.login,  t.status_chamado ";
     $sql.= "from Chamados as t join logins as u on (t.idSolicitante = u.idLogin) ";
-    $sql.= "where status_chamado ='Aberto' or status_chamado='Aguardando resposta' order by date_cad desc";
+    $sql.= "where status_chamado ='Aberto' or status_chamado='Aguardando resposta' or status_chamado='Sem material para troca' order by date_cad desc";
     
     $resultado = mysqli_query($link, $sql);
 
