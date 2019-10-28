@@ -13,7 +13,7 @@
 
     if($text_nSenha == '' || $text_cSenha == '' || $login == ''){
         echo'<br>';
-        echo'<div class="alert alert-primary" role="alert"><p>Preencha os campos!</p></div>';
+        echo'<div class="alert alert-warning" role="alert"><p>Preencha os campos!</p></div>';
         die();
     }
 

@@ -56,7 +56,7 @@
                 <hr>
                 <a href="#">Alterar senha</a>
                 <hr>
-                <a href="../Views/logout.php">Logout</a>
+                <a href="../Views/logoutHome.php">Logout</a>
             </div>
         </div>
         <a href="home.php" class="logoImg"><img src="../imagens/home-logo.png" class="imagem-logo" alt=""></a>

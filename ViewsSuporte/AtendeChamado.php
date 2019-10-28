@@ -1,5 +1,6 @@
 <?php
     session_start();
+    $erro = isset($_GET['erro']) ? $_GET['erro'] : 0;
     if(!isset($_SESSION['login'])){
         header('Location: ../ViewsSuporte/loginSuporte.php?erro=1');
     }
@@ -32,7 +33,7 @@
             });
         });
     </script>
-          <script lang="javascript">
+    <script lang="javascript">
         $(document).ready(function(){
             $('#btn_acesso').click(function(){
                 if($('#campo_id').val().length > 0 && $('#campo_resolucao').val().length > 0){
@@ -44,13 +45,23 @@
                            $('#campo_id').val('');
                            $('#campo_selection').val('');
                            $('#campo_resolucao').val('');
-                        alert('Chamado concluido com sucesso !');
+                        alert(' Lista de chamados atualizada!');
                        }
                    });
                 }
             });
         });
     </script>
+<script language='JavaScript'>
+function SomenteNumero(e){
+    var tecla=(window.event)?event.keyCode:e.which;   
+    if((tecla>47 && tecla<58)) return true;
+    else{
+    	if (tecla==8 || tecla==0) return true;
+	else  return false;
+    }
+}
+</script>
 </head>
 <body>
     <nav class="cabecalho">
@@ -79,16 +90,17 @@
                 <h4 class="">Concluir Chamados</h4>
                 <hr>
                 <br>
-                <form method="POST" id="formulario_atendimento">
+                <form action="" method="POST" id="formulario_atendimento" >
                     <fieldset class="borderchamado">
                         <div class="form-group col-md-12">
                             <br>
                             <div class="form-group col-md-0">
                             <label for="">Informe ID do atendimento.</label>
-                            <input type="text" class="form-control" id="campo_id" name="campo_id">
+                         
+                            <input type="text" class="form-control" name="campo_id" id="campo_id"  placeholder="Informe o Id de atendimento" onkeypress='return SomenteNumero(event)' maxlength="5">
                         </div>
                             <label for="">Status Pedido:</label>
-                            <select name="campo_selecao" id="campo_selecao" class="form-control">
+                            <select name="campo_selecao" id="campo_selecao" class="form-control" >
                                 <option value="Selecione">--Selecione--</option>
                                 <option value="Fechado">Fechado</option>
                                 <option value="Aguardando resposta">Aguardando resposta</option>
@@ -99,8 +111,14 @@
                             <label for="">Resposta Atendimento:</label>
                             <textarea name="campo_resolucao" id="campo_resolucao" cols="5" rows="3" class="form-control"></textarea>
                         </div> 
-                            <button type="button" class="btn-criar-chamado pull-right" id="btn_acesso">Concluir Chamado</button>
+                            <button type="submit" class="btn-criar-chamado pull-right" id="btn_acesso">Concluir Chamado</button>
                         </div>
+                        <?php
+                          if($erro == 1){
+                              require_once('../ControllerSuporte/SalvaAtendimento.php');
+                             echo '<font color="FF0000" style="text-align:center">Error... "'.$error1.'"</font>';
+                          }
+                        ?>
                         <br><br>
                     </fieldset>
                     <br><br>

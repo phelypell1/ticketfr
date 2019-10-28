@@ -21,7 +21,8 @@
                 echo '<hr class="hr-chamado list-group-item-heading">';
                 echo '<small class="date">'.$registro['daten'].'</small>';
                 echo '<h4 class="h4-st"> #'.$registro['idChamado'].' :<small>'.$registro['assunto'].'</small></h4>';
-                echo '<p class="assunto list-group-item-text"> '.$registro['descricao'].'</p>';
+                echo '<p class="assunto list-group-item-text"> '.$registro['descricao'].'</p><br>';
+                echo '<p class="assunto list-group-item-text">Solicitante. '.$registro['login'].'</p>';
                 echo '<small class="status">'.$registro['status_chamado'].'</small>';
                 echo '<hr class="hr-chamado">';
             echo '</a>';

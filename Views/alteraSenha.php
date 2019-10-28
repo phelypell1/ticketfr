@@ -1,8 +1,12 @@
 <?php
-session_start();
-if (!isset($_SESSION['login'])) {
-    header('Location: ../Views/login.php?erro=1');
-}
+
+if(!isset($_SESSION)) 
+{ 
+    session_start(); 
+} 
+  if(!isset($_SESSION['login'])){
+      header('Location: ../Views/login.php?erro=1');
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,13 +59,11 @@ if (!isset($_SESSION['login'])) {
         <button class="btnbusca" type="submit"><img src="../imagens/lupa.png" class="lupaconf" alt=""></button>
     </nav>
     <div class="container col-md-3">
-        <br><br>
         <div class="row">
-
             <form method="POST" id="altera_senhas" class=" col-md-12 alteraSenha" action="../Controllers/get_alteraSenha.php">
-                <fieldset class="borderchamado">
+                <br><br>    
+            <fieldset class="borderchamado">
                     <div class="form-group">
-                        <br>
                         <?php
                         require_once('../Connections/Conexao.php');
                         $id_login = $_SESSION['id'];
@@ -78,8 +80,7 @@ if (!isset($_SESSION['login'])) {
                             }
                         }
                         ?>
-                    </div>
-                    <div class="form-group col-md-12">
+                         <div class="form-group col-md-12">
                         <label for="">Nova Senha.:</label>
                         <input type="password" maxlength="8" name="campo_novasenha" id="campo_novasenha" class="form-control">
                     </div>
@@ -89,9 +90,10 @@ if (!isset($_SESSION['login'])) {
                     </div>
                     <div class="col-md-12">
                         <button class="btn btn-primary col-md-12" id="btn_NovaSenha">Alterar</button>
-                        <br>
-                        <br>
+                        
                     </div>
+                    </div>
+                   
 
                 </fieldset>
             </form>

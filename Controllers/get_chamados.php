@@ -12,7 +12,7 @@
 
     $sql = "select t.idChamado, t.tipoMensagem, t.assunto, t.descricao,  DATE_FORMAT(t.date_Cad,'%d-%m-%Y') as daten , u.login,  t.status_chamado ";
     $sql.= "from Chamados as t join logins as u on (t.idSolicitante = u.idLogin) ";
-    $sql.= "where status_chamado ='Aberto' and t.idSolicitante =".$_SESSION['id']." or status_chamado='Aguardando resposta' or status_chamado='Sem material para troca' order by date_cad desc";
+    $sql.= "where status_chamado ='Aberto' and t.idSolicitante =".$id_login." or status_chamado='Aguardando resposta' or status_chamado='Sem material para troca' order by date_cad desc";
     $resultado = mysqli_query($link, $sql);
 
     if($resultado){
@@ -21,8 +21,9 @@
             echo '<form action="" method="GET" ';
                 echo '<hr class="hr-chamado list-group-item-heading">';
                 echo '<small class="date">'.$registro['daten'].'</small>';
-                echo '<h4 class="h4-st" name="id" id="h4-reg"> #'.$registro['idChamado'].' :<small>'.$registro['assunto'].'</small></h4>';
-                echo '<p class="assunto list-group-item-text"> '.$registro['descricao'].'</p>';
+                echo '<h4 class="h4-st" name="id" id="h4-reg"> #'.$registro['idChamado'].' :<small>'.$registro['tipoMensagem'].'</small></h4>';
+                echo '<p class="assunto list-group-item-text"> '.$registro['descricao'].'</p><br>';
+                echo '<p class="assunto list-group-item-text">Solicitante. '.$registro['login'].'</p>';
                 echo '<small class="status">'.$registro['status_chamado'].'</small>';
                 echo '<hr class="hr-chamado">';
                 echo '</form>';
