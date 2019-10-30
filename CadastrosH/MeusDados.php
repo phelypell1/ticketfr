@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['login'])) {
-    header('Location: login.php?erro=1');
+    header('Location: ../Views/loginHome.php?erro=1');
 }
 $cad = isset($_GET['ok']) ? $_GET['ok'] : 0;
 ?>
@@ -46,15 +46,15 @@ $cad = isset($_GET['ok']) ? $_GET['ok'] : 0;
             <div class="dropdown-content">
                 <a href="#"><?= $_SESSION['login'] ?></a>
                 <hr>
-                <a href="#">Meus dados</a>
-                <hr>
-                <a href="#">Alterar senha</a>
+                <!--<a href="#">Meus dados</a>
+                <hr>-->
+                <a href="../CadastrosH/alteraSenha.php">Alterar senha</a>
                 <hr>
                 <a href="../Views/logoutHome.php">Logout</a>
             </div>
         </div>
-        <a href="home.php" class="logoImg"><img src="../imagens/home-logo.png" class="imagem-logo" alt=""></a>
-        <button type="button" class="botao">Chamados</button>
+        <a href="../Views/home.php" class="logoImg"><img src="../imagens/home-logo.png" class="imagem-logo" alt=""></a>
+        <button type="button" class="botao" onclick="window.location='../Views/home.php'">Chamados</button>
         <button type="button" class="botao">Equipe</button>
         <input type="search" class="input-form">
         <button class="btnbusca" type="submit"><img src="../imagens/lupa.png" class="lupaconf" alt=""></button>

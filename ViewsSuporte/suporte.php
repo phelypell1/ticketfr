@@ -39,15 +39,15 @@ if (!isset($_SESSION['login'])) {
             <div class="dropdown-content">
                 <a href="#"><?= $_SESSION['login'] ?></a>
                 <hr>
-                <a href="MeusDados.php">Meus dados</a>
+                <a href="../Cadastros/MeusDados.php">Meus dados</a>
                 <hr>
-                <a href="#">Alterar senha</a>
+                <a href="../Cadastros/alteraSenha.php">Alterar senha</a>
                 <hr>
                 <a href="../ViewsSuporte/logoutSuporte.php">Logout</a>
             </div>
         </div>
-        <a href="suporte.php" class="logoImg"><img src="../imagens/home-logo.png" class="imagem-logo" alt=""></a>
-        <button type="button" class="botao" onclick="window.location='suporte.php'">Chamados</button>
+        <a href="../ViewsSuporte/suporte.php" class="logoImg"><img src="../imagens/home-logo.png" class="imagem-logo" alt=""></a>
+        <button type="button" class="botao" onclick="window.location='../ViewsSuporte/suporte.php'">Chamados</button>
         <button type="button" class="botao">Equipe</button>
         <input type="search" class="input-form">
         <button class="btnbusca" type="submit"><img src="../imagens/lupa.png" class="lupaconf" alt=""></button>
@@ -57,7 +57,7 @@ if (!isset($_SESSION['login'])) {
             <div class="col-md-12 ">
                 <h4 class="">Chamados</h4>
                 <hr>
-                <button type="button" id="btn_aberto" class="btnchamados" onclick="window.location='suporte.php'">Chamados em aberto</button>
+                <button type="button" id="btn_aberto" class="btnchamados" onclick="window.location='../ViewsSuporte/suporte.php'">Chamados em aberto</button>
                 <button type="button" id="btn_fechados" class="btnchamados" onclick="window.location='../ViewsSuporte/chamadosFechados.php'">Fechados</button>
 
                 <hr class="hr1">

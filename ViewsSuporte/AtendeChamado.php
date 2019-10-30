@@ -1,6 +1,5 @@
 <?php
     session_start();
-    $erro = isset($_GET['erro']) ? $_GET['erro'] : 0;
     if(!isset($_SESSION['login'])){
         header('Location: ../ViewsSuporte/loginSuporte.php?erro=1');
     }
@@ -27,6 +26,7 @@
                        method: 'post',
                        data: $('#formulario_atendimento').serialize(),
                        success: function(data){
+                        
                        }
                    });
                 }
@@ -45,7 +45,7 @@
                            $('#campo_id').val('');
                            $('#campo_selection').val('');
                            $('#campo_resolucao').val('');
-                        alert(' Lista de chamados atualizada!');
+                           alert('Lista de chamados atualizada!');
                        }
                    });
                 }
@@ -111,15 +111,9 @@ function SomenteNumero(e){
                             <label for="">Resposta Atendimento:</label>
                             <textarea name="campo_resolucao" id="campo_resolucao" cols="5" rows="3" class="form-control"></textarea>
                         </div> 
-                            <button type="submit" class="btn-criar-chamado pull-right" id="btn_acesso">Concluir Chamado</button>
+                        <div class="form-group col-md-12">
+                            <button type="button" class="btn-criar-chamado pull-left" id="btn_acesso">Concluir Chamado</button>
                         </div>
-                        <?php
-                          if($erro == 1){
-                              require_once('../ControllerSuporte/SalvaAtendimento.php');
-                             echo '<font color="FF0000" style="text-align:center">Error... "'.$error1.'"</font>';
-                          }
-                        ?>
-                        <br><br>
                     </fieldset>
                     <br><br>
                 </form>

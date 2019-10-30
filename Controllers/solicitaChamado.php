@@ -11,6 +11,9 @@
     $text_assunto = $_POST['campo_assuntos'];
     $text_descricao = $_POST['campo_descricao'];
     $login = $_SESSION['id'];
+    $email = $_SESSION['email'];
+    $nome = $_SESSION['login'];
+
 
     if($text_assunto == '' || $text_descricao == '' || $login == ''){
         die();

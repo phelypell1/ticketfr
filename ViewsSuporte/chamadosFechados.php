@@ -36,11 +36,11 @@
             <div class="dropdown-content">
                 <a href="#"><?=$_SESSION['login']?></a>
                 <hr>
-                <a href="#">Meus dados</a>
+                <a href="../Views/MeusDados.php">Meus dados</a>
                 <hr>
-                <a href="#">Alterar senha</a>
+                <a href="">Alterar senha</a>
                 <hr>
-                <a href="logout.php">Logout</a>
+                <a href="logoutSuporte.php">Logout</a>
             </div>
         </div>
         <a href="../ViewsSuporte/suporte.php" class="logoImg"><img src="../imagens/home-logo.png" class="imagem-logo" alt=""></a>

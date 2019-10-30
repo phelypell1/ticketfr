@@ -185,6 +185,11 @@ h4{
 .pull-right{
     float: right !important;
 }
+.pull-left{
+    float: left !important;
+    margin-left: 0px;
+    margin-bottom: 10px;
+}
 .colorCad{
     border-top: 15px;
     border-radius: 3px;

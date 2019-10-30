@@ -37,9 +37,9 @@
             <div class="dropdown-content">
                 <a href="#"><?=$_SESSION['login']?></a>
                 <hr>
-                <a href="MeusDados.php">Meus dados</a>
+                <a href="../CadastrosH/MeusDados.php">Meus dados</a>
                 <hr>
-                <a href="../Views/alteraSenha.php">Alterar senha</a>
+                <a href="../CadastrosH/alteraSenha.php">Alterar senha</a>
                 <hr>
                 <a href="../Views/logoutHome.php">Logout</a>
             </div>

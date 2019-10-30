@@ -37,12 +37,27 @@
                            $('#campo_selection').val('testando');
                            $('#campo_assuntos').val('');
                            $('#campo_descricao').val('');
-                        alert('Enviado com sucesso !');
+                            alert('Enviado com sucesso !');
                        }
                    });
                 }
             });
         });
+    </script>
+
+    <script lang="javascript">
+    $(document).ready(function(){
+        $('#btn_acesso').click(function(){
+            $.ajax({
+                url: '../EmaiPhp/envia_email.php',
+                method: 'post',
+                data: $('#formulario_Chamado').serialize(),
+                success: function(data){
+                    alert('Email enviado');
+                }
+            });
+        });
+    });
     </script>
 </head>
 <body>
@@ -82,7 +97,7 @@
                 <h4 class="">Novo Chamado</h4>
                 <hr>
                 <br>
-                <form method="POST" id="formulario_Chamado">
+                <form method="POST" id="formulario_Chamado" action="">
                     <fieldset class="borderchamado">
                         <div class="form-group col-md-12">
                             <br>

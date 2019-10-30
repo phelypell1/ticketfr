@@ -47,13 +47,13 @@ if(!isset($_SESSION))
             <div class="dropdown-content">
                 <a href="#"><?= $_SESSION['login'] ?></a>
                 <hr>
-                <a href="MeusDados.php">Meus dados</a>
+                <a href="../Cadastros/MeusDados.php">Meus dados</a>
                 <hr>
-                <a href="../Views/logoutHome.php">Logout</a>
+                <a href="../Views/logoutSuporte.php">Logout</a>
             </div>
         </div>
-        <a href="home.php" class="logoImg"><img src="../imagens/home-logo.png" class="imagem-logo" alt=""></a>
-        <button type="button" class="botao" onclick="window.location='home.php'">Chamados</button>
+        <a href="../ViewsSuporte/suporte.php" class="logoImg"><img src="../imagens/home-logo.png" class="imagem-logo" alt=""></a>
+        <button type="button" class="botao" onclick="window.location='../ViewsSuporte/suporte.php'">Chamados</button>
         <button type="button" class="botao">Equipe</button>
         <input type="search" class="input-form">
         <button class="btnbusca" type="submit"><img src="../imagens/lupa.png" class="lupaconf" alt=""></button>
