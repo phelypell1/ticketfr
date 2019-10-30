@@ -49,7 +49,7 @@
     $(document).ready(function(){
         $('#btn_acesso').click(function(){
             $.ajax({
-                url: '../EmaiPhp/envia_email.php',
+                url: '../EmaiPhp/enviar_email.php',
                 method: 'post',
                 data: $('#formulario_Chamado').serialize(),
                 success: function(data){
@@ -97,7 +97,7 @@
                 <h4 class="">Novo Chamado</h4>
                 <hr>
                 <br>
-                <form method="POST" id="formulario_Chamado" action="">
+                <form method="POST" id="formulario_Chamado" action="../EmaiPhp/envia_email.php">
                     <fieldset class="borderchamado">
                         <div class="form-group col-md-12">
                             <br>
@@ -123,7 +123,7 @@
                                 <span class="glyphicon glyphicon-paperclip">Enviar arquivos</span>
                                 <input type="file" class="fileinput-button">
                             </a>
-                            <button type="button" class="btn-criar-chamado pull-right" id="btn_acesso">Criar Chamado</button>
+                            <button type="submit" class="btn-criar-chamado pull-right" id="btn_acesso">Criar Chamado</button>
                         </div>
                     </fieldset>
                 </form>

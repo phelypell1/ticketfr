@@ -19,7 +19,7 @@
     if($resultado){
         while($registro = mysqli_fetch_array($resultado)){
             
-            echo '<a href= "../ViewsSuporte/AtendeChamado.php" method="GET">';
+            echo '<a href= "../ViewsSuporte/AtendeChamado.php" method="post" action="AtendeChamado.php" >';
             echo '<form method="GET"';
                 echo '<hr class="hr-chamado list-group-item-heading">';
                 echo '<small class="date">'.$registro['daten'].'</small>';
@@ -29,7 +29,7 @@
                 echo '<small class="status">'.$registro['status_chamado'].'</small>';
                 echo '<hr class="hr-chamado">';
                 echo '</form>';
-                echo '</a>';
+                echo '</a type="submit">';
            
         }
     }else{

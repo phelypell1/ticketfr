@@ -96,8 +96,7 @@ function SomenteNumero(e){
                             <br>
                             <div class="form-group col-md-0">
                             <label for="">Informe ID do atendimento.</label>
-                         
-                            <input type="text" class="form-control" name="campo_id" id="campo_id"  placeholder="Informe o Id de atendimento" onkeypress='return SomenteNumero(event)' maxlength="5">
+                            <input type="text" value="" class="form-control" name="campo_id" id="campo_id"  placeholder="Informe o Id de atendimento" onkeypress='return SomenteNumero(event)' maxlength="5">
                         </div>
                             <label for="">Status Pedido:</label>
                             <select name="campo_selecao" id="campo_selecao" class="form-control" >

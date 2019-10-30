@@ -1,14 +1,6 @@
 <?php
-session_start();
 include "../Views/chamado.php";
-    $text_selection = $_POST['campo_selection'];
-    $text_assunto = $_POST['campo_assuntos'];
-    $text_descricao = $_POST['campo_descricao'];
-    $login = $_SESSION['id'];
-    $email = $_SESSION['email'];
     $nome = $_SESSION['login'];
-
-
 // Inclui o arquivo class.phpmailer.php localizado na mesma pasta do arquivo php 
 include "../EmaiPhp/PHPMailer/PHPMailerAutoload.php"; 
 
@@ -30,21 +22,23 @@ $mail->SMTPAuth = true;
 
 // Usuário do servidor SMTP (endereço de email) 
 // obs: Use a mesma senha da sua conta de email 
+//$mail->Username = 'webmaster@freng.com.br';
+$mail->Username = 'frincorporadora@hotmail.com';
 $mail->Username = 'webmaster@freng.com.br'; 
-$mail->Password = 'Fr@102030'; 
+$mail->Password = 'X01nn@h77M'; 
 
 // Configurações de compatibilidade para autenticação em TLS 
 $mail->SMTPOptions = array( 'ssl' => array( 'verify_peer' => false, 'verify_peer_name' => false, 'allow_self_signed' => true ) ); 
 
 // Você pode habilitar esta opção caso tenha problemas. Assim pode identificar mensagens de erro. 
- $mail->SMTPDebug = 2; 
+ //$mail->SMTPDebug = 2; 
 
 // Define o remetente 
 // Seu e-mail 
 $mail->From = "webmaster@freng.com.br"; 
 
 // Seu nome 
-$mail->FromName = "$text_selection"; 
+$mail->FromName = "$nome"; 
 
 // Define o(s) destinatário(s) 
 $mail->AddAddress('webmaster@freng.com.br', 'Webmaster'); 
@@ -64,10 +58,18 @@ $mail->IsHTML(true);
 $mail->CharSet = 'UTF-8'; 
 
 // Assunto da mensagem 
-$mail->Subject = "$txt_set"; 
+$mail->Subject = "Novo chamado aberto"; 
 
 // Corpo do email 
-$mail->Body = 'Testando'; 
+$mail->Body = 
+"<html>
+    <body>
+        <h1>Atenção</h1>
+        <p>Foi aberto um novo chamado, verifique o sistema.</p>
+        <p>E-mail automático não responder</p> 
+    </body>
+
+</html>"; 
 
 // Opcional: Anexos 
 // $mail->AddAttachment("/home/usuario/public_html/documento.pdf", "documento.pdf"); 
