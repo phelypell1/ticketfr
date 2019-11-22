@@ -3,6 +3,7 @@ session_start();
 if (!isset($_SESSION['login'])) {
     header('Location: ../ViewsSuporte/loginSuporte.php?erro=1');
 }
+header("Refresh:240");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,8 +23,6 @@ if (!isset($_SESSION['login'])) {
                     url: '../ControllerSuporte/getListaSuporte.php',
                     success: function(data) {
                         $('#lista_aberta').html(data);
-                        
-
                     }
                 });
             }

@@ -1,6 +1,7 @@
 <?php
-include "../Views/chamado.php";
-    $nome = $_SESSION['login'];
+session_start();
+$nome = $_SESSION['login'];
+$email = $_SESSION['email'];
 // Inclui o arquivo class.phpmailer.php localizado na mesma pasta do arquivo php 
 include "../EmaiPhp/PHPMailer/PHPMailerAutoload.php"; 
 
@@ -11,7 +12,7 @@ $mail = new PHPMailer();
 $mail->IsSMTP(); 
 
 // Enviar por SMTP 
-$mail->Host = "mail.freng.com.br"; 
+$mail->Host = "smtp.office365.com"; 
 
 // Você pode alterar este parametro para o endereço de SMTP do seu provedor 
 $mail->Port = 587; 
@@ -24,8 +25,8 @@ $mail->SMTPAuth = true;
 // obs: Use a mesma senha da sua conta de email 
 //$mail->Username = 'webmaster@freng.com.br';
 $mail->Username = 'frincorporadora@hotmail.com';
-$mail->Username = 'webmaster@freng.com.br'; 
-$mail->Password = 'X01nn@h77M'; 
+//$mail->Username = 'webmaster@freng.com.br'; 
+$mail->Password = 'Fw38q1V7sN';
 
 // Configurações de compatibilidade para autenticação em TLS 
 $mail->SMTPOptions = array( 'ssl' => array( 'verify_peer' => false, 'verify_peer_name' => false, 'allow_self_signed' => true ) ); 
@@ -35,16 +36,16 @@ $mail->SMTPOptions = array( 'ssl' => array( 'verify_peer' => false, 'verify_peer
 
 // Define o remetente 
 // Seu e-mail 
-$mail->From = "webmaster@freng.com.br"; 
+$mail->From = "frincorporadora@hotmail.com";
 
 // Seu nome 
 $mail->FromName = "$nome"; 
 
 // Define o(s) destinatário(s) 
-$mail->AddAddress('webmaster@freng.com.br', 'Webmaster'); 
+$mail->AddAddress("frincorporadora@hotmail.com", "CPD"); 
 
 // Opcional: mais de um destinatário
-// $mail->AddAddress('fernando@email.com'); 
+ $mail->AddAddress('webmaster@freng.com.br'); 
 
 // Opcionais: CC e BCC
 // $mail->AddCC('joana@provedor.com', 'Joana'); 
@@ -81,7 +82,9 @@ $enviado = $mail->Send();
 if ($enviado) 
 { 
     echo "Seu email foi enviado com sucesso!"; 
+    //include "../Views/chamado.php";
 } else { 
     echo "Houve um erro enviando o email: ".$mail->ErrorInfo; 
+    //include "../Views/chamado.php";
 } 
 ?>

@@ -4,7 +4,7 @@
         header('Location: ../ViewsSuporte/loginSuporte.php?erro=1');
     }
     $cad = isset($_GET['ok']) ? $_GET['ok'] : 0;
-?>
+    ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -52,6 +52,29 @@
             });
         });
     </script>
+    <script>
+$(document).ready(function(){
+
+    $("body").delegate(".dayReserve", "click", function(e){
+        //Retirando ação padrão já no início do código.
+        e.preventDefault()
+
+        var iData = $(this).data("dia");
+        var iLocal = $(this).data("local");
+        var iHorario = $(this).data("horario");
+
+        $.ajax({
+           type: "GET",
+           url: "../getListaSuporte.php",
+           data: "id="+id,
+           dataType: "html",
+           ...
+        })
+        return false;
+    });
+})
+
+</script>
 <script language='JavaScript'>
 function SomenteNumero(e){
     var tecla=(window.event)?event.keyCode:e.which;   
@@ -70,9 +93,9 @@ function SomenteNumero(e){
             <div class="dropdown-content">
                 <a href="#"><?=$_SESSION['login']?></a>
                 <hr>
-                <a href="#">Meus dados</a>
+                <a href="../Cadastros/MeusDados.php">Meus dados</a>
                 <hr>
-                <a href="#">Alterar senha</a>
+                <a href="../Cadastros/alteraSenha.php">Alterar senha</a>
                 <hr>
                 <a href="../ViewsSuporte/logoutSuporte.php">Logout</a>
             </div>
@@ -90,16 +113,30 @@ function SomenteNumero(e){
                 <h4 class="">Concluir Chamados</h4>
                 <hr>
                 <br>
+                <?php
+                    require_once('../Connections/Conexao.php');
+                    $id_login = $_SESSION['id'];
+                    $ObjDB = new DB();
+                    $link = $ObjDB -> connecta_mysql();
+                    $txt_id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+                    $sql = "select * from Chamados where idChamado = '.$txt_id.'";
+                    $resultado = mysqli_query($link, $sql);
+                    if($resultado){
+                        while($registro = mysqli_fetch_array($resultado)){
+                            $id = $registro['idChamado'];
+                        }
+                    }
+                ?>
                 <form action="" method="POST" id="formulario_atendimento" >
                     <fieldset class="borderchamado">
                         <div class="form-group col-md-12">
                             <br>
                             <div class="form-group col-md-0">
-                            <label for="">Informe ID do atendimento.</label>
-                            <input type="text" value="" class="form-control" name="campo_id" id="campo_id"  placeholder="Informe o Id de atendimento" onkeypress='return SomenteNumero(event)' maxlength="5">
+                            <label for="">ID do atendimento.</label>
+                            <input type="text" value="<?php echo $txt_id?>" class="form-control" name="campo_id" id="campo_id">
                         </div>
                             <label for="">Status Pedido:</label>
-                            <select name="campo_selecao" id="campo_selecao" class="form-control" >
+                            <select name="campo_selecao" id="campo_selecao" class="form-control">
                                 <option value="Selecione">--Selecione--</option>
                                 <option value="Fechado">Fechado</option>
                                 <option value="Aguardando resposta">Aguardando resposta</option>

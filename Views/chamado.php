@@ -18,13 +18,6 @@
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <script src="../bootstrap/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../PageStyle/styleHome.css">
-    <script>
-        function alertas(){
-            $('#myAlert').on('closed.bs.alert',function(){
-                //do something...
-            });
-            }
-    </script>
     <script lang="javascript">
         $(document).ready(function(){
             $('#btn_acesso').click(function(){
@@ -37,7 +30,7 @@
                            $('#campo_selection').val('testando');
                            $('#campo_assuntos').val('');
                            $('#campo_descricao').val('');
-                            alert('Enviado com sucesso !');
+                            alert('Enviando...');
                        }
                    });
                 }
@@ -49,11 +42,11 @@
     $(document).ready(function(){
         $('#btn_acesso').click(function(){
             $.ajax({
-                url: '../EmaiPhp/enviar_email.php',
+                url: '../EmaiPhp/envia_email.php',
                 method: 'post',
                 data: $('#formulario_Chamado').serialize(),
                 success: function(data){
-                    alert('Email enviado');
+                    alert('Chamado realizado com sucesso !');
                 }
             });
         });
@@ -97,7 +90,7 @@
                 <h4 class="">Novo Chamado</h4>
                 <hr>
                 <br>
-                <form method="POST" id="formulario_Chamado" action="../EmaiPhp/envia_email.php">
+                <form method="POST" id="formulario_Chamado" action="">
                     <fieldset class="borderchamado">
                         <div class="form-group col-md-12">
                             <br>
@@ -123,7 +116,7 @@
                                 <span class="glyphicon glyphicon-paperclip">Enviar arquivos</span>
                                 <input type="file" class="fileinput-button">
                             </a>
-                            <button type="submit" class="btn-criar-chamado pull-right" id="btn_acesso">Criar Chamado</button>
+                            <button type="button" class="btn-criar-chamado pull-right" id="btn_acesso">Criar Chamado</button>
                         </div>
                     </fieldset>
                 </form>
