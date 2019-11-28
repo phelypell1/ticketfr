@@ -1,7 +1,10 @@
 <?php
 session_start();
 $nome = $_SESSION['login'];
-$email = $_SESSION['email'];
+$id_chamado = $_POST['campo_id'];
+$status = $_POST['campo_selecao'];
+$resposta = $_POST['campo_resolucao'];
+$email = $_POST['campo_email'];
 // Inclui o arquivo class.phpmailer.php localizado na mesma pasta do arquivo php 
 include "../EmaiPhp/PHPMailer/PHPMailerAutoload.php"; 
 
@@ -45,7 +48,8 @@ $mail->FromName = "$nome";
 $mail->AddAddress("frincorporadora@hotmail.com", "CPD"); 
 
 // Opcional: mais de um destinatário
- $mail->AddAddress('webmaster@freng.com.br'); 
+ //$mail->AddAddress('webmaster@freng.com.br');
+ $mail->AddAddress($email); 
 
 // Opcionais: CC e BCC
 // $mail->AddCC('joana@provedor.com', 'Joana'); 
@@ -59,7 +63,7 @@ $mail->IsHTML(true);
 $mail->CharSet = 'UTF-8'; 
 
 // Assunto da mensagem 
-$mail->Subject = "Novo chamado aberto"; 
+$mail->Subject = "Atendimento chamado #".$id_chamado; 
 
 // Corpo do email 
 $mail->Body = 

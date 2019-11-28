@@ -6,7 +6,6 @@
 
     require_once('../Connections/Conexao.php');
     $id_login = $_SESSION['id'];
-    $_SESSION['name'];
 
     $ObjDB = new DB();
     $link = $ObjDB -> connecta_mysql();
@@ -18,21 +17,18 @@
 
     if($resultado){
         while($registro = mysqli_fetch_array($resultado)){
-            $_SESSION['id'] = $registro['idChamado'];
-           
-            echo '<a href= "">';
-            echo '<form action="AtendeChamado.php" method="post" ';
+            $id = $registro['idChamado'];
+            echo '<a href="#">';
+            echo '<form action="" method="post" ';
                 echo '<hr class="hr-chamado list-group-item-heading">';
                 echo '<small class="date">'.$registro['daten'].'</small>';
                 echo '<h4 class="h4-st" name="campo_id" id="h4-reg"> #'.$registro['idChamado'].' :<small>'.$registro['tipoMensagem'].'</small></h4>';
                 echo '<p class="assunto list-group-item-text" name="campo_desc"> '.$registro['descricao'].'</p><br>';
                 echo '<p class="assunto list-group-item-text">Solicitante. '.$registro['login'].'</p>';
                 echo '<small class="status">'.$registro['status_chamado'].'</small>';
-                echo '<h1>Atenção</h1>';
                 echo '<hr class="hr-chamado">';
                 echo '</form>';
                 echo '</a>';
-                
         }
     }else{
         echo 'ERROR !'.mysqli_error($link);

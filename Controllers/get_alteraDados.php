@@ -3,27 +3,21 @@
     if(!isset($_SESSION['login'])){
         header('location: home.php?erro=1');
     }
-
     require_once('../Connections/Conexao.php');
-    include('../Views/MeusDados.php');
-    
-    $text_login = $_POST['campo_login'];
-    $text_email = $_POST['campo_email'];
-    $login = $_SESSION['id'];
-
-    if($text_login == '' || $text_email == '' || $login == ''){
-        die();
-    }
-
+    $id_login = $_SESSION['id'];
+    $login = $_POST['campo_login'];
+    $email = $_POST['campo_email'];
     $ObjDB = new DB();
     $link = $ObjDB -> connecta_mysql();
+    $sql ="update logins set login='".$login."', email='".$email."'  where idLogin ='".$id_login."'";
 
-    $sql="update logins set login='".$text_login."', email='".$text_email."' where idLogin ='".$login."'";
-
-    if(mysqli_query($link, $sql)){
-        echo'Update ok';
-    }else{
-       echo'Error'.mysqli_error($link);
+    if($login == '' || $email == ''){
+        echo'<a class="alert-warning"> Atenção os campo Usuário e email não podem estar em branco !</a>';
+        die();
     }
-
+    if(mysqli_query($link, $sql)){
+        echo'<a class="alert-success">Sucesso ! foi atualizado.</a>';
+    }else{
+        echo mysqli_error($link);
+    }
 ?>

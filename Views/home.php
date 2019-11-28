@@ -1,10 +1,8 @@
 <?php
-    session_start();
-    if(!isset($_SESSION['login'])){
-        header('Location: login.php?erro=1');
-    }
     header("Refresh:240");
+    require_once("../NavBar-Menu/nav-menu.php");
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -31,25 +29,6 @@
     </script>
 </head>
 <body>
-    <nav class="cabecalho position-static">
-        <div class="dropdown position-menu">
-            <img src="../imagens/user.png" class="img dropbtn" alt="">
-            <div class="dropdown-content">
-                <a href="#"><?=$_SESSION['login']?></a>
-                <hr>
-                <a href="../CadastrosH/MeusDados.php">Meus dados</a>
-                <hr>
-                <a href="../CadastrosH/alteraSenha.php">Alterar senha</a>
-                <hr>
-                <a href="../Views/logoutHome.php">Logout</a>
-            </div>
-        </div>
-        <a href="home.php" class="logoImg"><img src="../imagens/home-logo.png" class="imagem-logo" alt=""></a>
-        <button type="button" class="botao" onclick="window.location='home.php'">Chamados</button>
-        <button type="button" class="botao">Equipe</button>
-        <input type="search" class="input-form">
-        <button class="btnbusca" type="submit"><img src="../imagens/lupa.png" class="lupaconf" alt=""></button>
-    </nav>
     <div class="container">
         <div class="row">
             <div class="col-md-12 ">

@@ -52,29 +52,22 @@
             });
         });
     </script>
-    <script>
-$(document).ready(function(){
-
-    $("body").delegate(".dayReserve", "click", function(e){
-        //Retirando ação padrão já no início do código.
-        e.preventDefault()
-
-        var iData = $(this).data("dia");
-        var iLocal = $(this).data("local");
-        var iHorario = $(this).data("horario");
-
-        $.ajax({
-           type: "GET",
-           url: "../getListaSuporte.php",
-           data: "id="+id,
-           dataType: "html",
-           ...
-        })
-        return false;
-    });
-})
-
-</script>
+    <script lang="javascript">
+        $(document).ready(function(){
+            $('#btn_acesso').click(function(){
+                if($('#campo_id').val().length > 0 && $('#campo_resolucao').val().length > 0){
+                   $.ajax({
+                       url: '../EmaiPhp/email_atende_chamado.php',
+                       method: 'post',
+                       data: $('#formulario_atendimento').serialize(),
+                       success: function(data){
+                        alert('Enviado');
+                       }
+                   });
+                }
+            });
+        });
+    </script>
 <script language='JavaScript'>
 function SomenteNumero(e){
     var tecla=(window.event)?event.keyCode:e.which;   
@@ -119,11 +112,11 @@ function SomenteNumero(e){
                     $ObjDB = new DB();
                     $link = $ObjDB -> connecta_mysql();
                     $txt_id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
-                    $sql = "select * from Chamados where idChamado = '.$txt_id.'";
+                    $sql = "select * from Chamados where idChamado = $txt_id";
                     $resultado = mysqli_query($link, $sql);
                     if($resultado){
                         while($registro = mysqli_fetch_array($resultado)){
-                            $id = $registro['idChamado'];
+                            $email = $registro['email_sol'];
                         }
                     }
                 ?>
@@ -133,7 +126,7 @@ function SomenteNumero(e){
                             <br>
                             <div class="form-group col-md-0">
                             <label for="">ID do atendimento.</label>
-                            <input type="text" value="<?php echo $txt_id?>" class="form-control" name="campo_id" id="campo_id">
+                            <input type="text" value="<?php echo $txt_id?>" class="form-control" name="campo_id" id="campo_id" readonly>
                         </div>
                             <label for="">Status Pedido:</label>
                             <select name="campo_selecao" id="campo_selecao" class="form-control">
@@ -146,7 +139,11 @@ function SomenteNumero(e){
                         <div class="form-group col-md-12">
                             <label for="">Resposta Atendimento:</label>
                             <textarea name="campo_resolucao" id="campo_resolucao" cols="5" rows="3" class="form-control"></textarea>
-                        </div> 
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="">Email resposta.:</label>
+                            <input type="text" value="<?php echo $email?>" class="form-control" name="campo_email" id="campo_email" readonly>
+                        </div>
                         <div class="form-group col-md-12">
                             <button type="button" class="btn-criar-chamado pull-left" id="btn_acesso">Concluir Chamado</button>
                         </div>

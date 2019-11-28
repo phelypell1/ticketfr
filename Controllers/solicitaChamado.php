@@ -10,21 +10,29 @@
     $text_selection = $_POST['campo_selection'];
     $text_assunto = $_POST['campo_assuntos'];
     $text_descricao = $_POST['campo_descricao'];
+    $txt_email = $_POST['campo_email'];
     $login = $_SESSION['id'];
     $email = $_SESSION['email'];
     $nome = $_SESSION['login'];
 
 
-    if($text_assunto == '' || $text_descricao == '' || $login == ''){
+    if($text_assunto == '' || $text_descricao == '' || $login == '' || $txt_email==''){
+        header('location: ../Views/chamado.php?status=3');
         die();
     }
 
     $ObjDB = new DB();
     $link = $ObjDB -> connecta_mysql();
 
-    $sql = "insert into Chamados(tipoMensagem, assunto, descricao, idSolicitante) values('$text_selection', '$text_assunto',
-    '$text_descricao', $login)";
+    $sql = "insert into Chamados(tipoMensagem, assunto, descricao, idSolicitante, email_sol) 
+    values('$text_selection', '$text_assunto','$text_descricao', '$login', '$txt_email')";
 
-    mysqli_query($link,$sql);
+    if(mysqli_query($link,$sql)){
+        header('location: ../Views/chamado.php?status=1');
+        echo 'ok';
+    }else{
+        header('location: ../Views/chamado.php?status=2');
+        mysqli_error($link);
+    }
 
 ?>

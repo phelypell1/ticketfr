@@ -31,7 +31,7 @@ $cad = isset($_GET['ok']) ? $_GET['ok'] : 0;
                             $('#campo_login').val;
                             $('#campo_senha').val;
                             $('#campo_email').val;
-                            alert('Enviado com sucesso !');
+                            alert('Atualizado com sucesso !');
                         }
                     });
                 }
