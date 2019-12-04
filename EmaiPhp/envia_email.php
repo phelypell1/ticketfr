@@ -2,6 +2,8 @@
 session_start();
 $nome = $_SESSION['login'];
 $email = $_SESSION['email'];
+$tipo = $_POST['campo_selection'];
+$descricao =  $_POST['campo_descricao'];
 // Inclui o arquivo class.phpmailer.php localizado na mesma pasta do arquivo php 
 include "../EmaiPhp/PHPMailer/PHPMailerAutoload.php"; 
 
@@ -103,20 +105,21 @@ margin-top: 20px;
                 <form>
                     <h4>Dados para criar acesso.</h4>
                     <br>
-                    <p>Olá, Seu Chamado foi respondido, segue dados do chamado.</p>
+                    <p>Atenção! Existem novos chamados.</p>
                     <br>
                     <fieldset>
                     <div class='form-row form'>
+                    <p>Segue dados da solicitação</p>
                         <div class='form-group col-md-12'>
-                            <label for='' class='position-inputs'>#.: ".$id_chamado."</label>
+                            <label for='' class='position-inputs'>Solicitante:. ".$nome."</label>
                         </div>
                         <br>
                         <div class='form-group col-md-12'>
-                            <label for=''class='position-inputs'>Status.: ".$status."</label>
+                            <label for=''class='position-inputs'>Status.: ".$tipo."</label>
                         </div>
                         <br>
                         <div class='form-group col-md-12'>
-                                <label for='' class='position-inputs'>Resposta.: ".$resposta."</label>
+                                <label for='' class='position-inputs'>Resposta.: ".$descricao."</label>
                             </div>
                             <br>
                     </div>

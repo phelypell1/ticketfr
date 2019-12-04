@@ -38,8 +38,7 @@ $email = $_SESSION['email'];
                 }
             });
         });
-    </script>
-
+    </script>-->
     <script lang="javascript">
     $(document).ready(function(){
         $('#btn_acesso').click(function(){
@@ -53,12 +52,12 @@ $email = $_SESSION['email'];
             });
         });
     });
-    </script>-->
+    </script>
 </head>
 
 <body>
     <nav class="cabecalho">
-        <div class="dropdown position-menu">
+        <div class="dropdown position-menu fixed-top">
             <img src="../imagens/user.png" class="img dropbtn" alt="">
             <div class="dropdown-content">
                 <a href="#"><?= $_SESSION['login'] ?></a>
@@ -131,7 +130,7 @@ $email = $_SESSION['email'];
                         </div>
                         <div class="form-group col-md-12">
                             <label for="">Email:</label>
-                            <input name="campo_email" id="campo_email" class="form-control inputs-l" value="<? echo $email ?>" readonly>
+                            <input name="campo_email" id="campo_email" class="form-control inputs-l" value="<?echo$email?>" readonly>
                         </div>
                         <div class="form-group col-md-12">
                             <a href="#" class="btn btn-default fileinput-button inputs-l">

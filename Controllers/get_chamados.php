@@ -10,14 +10,17 @@
     $ObjDB = new DB();
     $link = $ObjDB -> connecta_mysql();
 
-    $sql = "select t.idChamado, t.tipoMensagem, t.assunto, t.descricao,  DATE_FORMAT(t.date_Cad,'%d-%m-%Y') as daten , u.login,  t.status_chamado ";
-    $sql.= "from Chamados as t join logins as u on (t.idSolicitante = u.idLogin) ";
-    $sql.= "where status_chamado ='Aberto' and t.idSolicitante =".$id_login." or status_chamado='Aguardando resposta' or status_chamado='Sem material para troca' order by date_cad desc";
+    $sql = "select t.idChamado, t.tipoMensagem, t.assunto, t.descricao,  DATE_FORMAT(t.date_Cad,'%d-%m-%Y') ";
+    $sql.= "as daten , u.login,  t.status_chamado ";
+    $sql.= "from Chamados as t join logins as u on (t.idSolicitante = u.idLogin)";
+    $sql.="where t.idSolicitante = '".$id_login."'";
+    $sql.="and status_chamado != 'Fechado'";
+    $sql.="order by date_cad desc";
+    
     $resultado = mysqli_query($link, $sql);
 
     if($resultado){
         while($registro = mysqli_fetch_array($resultado)){
-            $id = $registro['idChamado'];
             echo '<a href="#">';
             echo '<form action="" method="post" ';
                 echo '<hr class="hr-chamado list-group-item-heading">';

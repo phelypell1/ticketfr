@@ -16,7 +16,7 @@
     $nome = $_SESSION['login'];
 
 
-    if($text_assunto == '' || $text_descricao == '' || $login == '' || $txt_email==''){
+    if($text_selection =='' || $text_assunto == '' || $text_descricao == '' || $login == '' || $txt_email==''){
         header('location: ../Views/chamado.php?status=3');
         die();
     }

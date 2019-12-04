@@ -26,7 +26,10 @@
                 echo '<hr class="hr-chamado">';
             echo '</a>';
         }
-    }else{
+        
+    }
+    else{
+        echo 'Por equando suas solicitações não foram atendidas.';
         echo 'ERROR ! <br>'.mysqli_error($link);
     }
 ?>
