@@ -103,7 +103,7 @@ $email = $_SESSION['email'];
                  </div>';
                         } elseif ($cad == 3) {
                             echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    <strong>Opssssss !</strong>Cadê o e-mail ? vá em "Meus Dados" e acrescente seu e-mail
+                    <strong>Opssssss !</strong>Cadê o e-mail ? vá em "Perfil - Meus Dados" e acrescente seu e-mail
                     <button id="myAlert" type="button" class="close" data-dismiss="alert" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
@@ -139,17 +139,12 @@ $email = $_SESSION['email'];
                             </a>
                             <button type="submit" class="btn-criar-chamado pull-right" id="btn_acesso">Criar Chamado</button>
                         </div>
-                        
                     </fieldset>
                 </form>
             </div>
         </div>
     </div>
     </div>
-
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-
 </body>
-
 </html>

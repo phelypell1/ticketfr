@@ -105,7 +105,6 @@ margin-top: 20px;
         <div class='col-md-8'></div>
             <div class='col-md-4 login'>
                 <form>
-                    <h4>Dados para criar acesso.</h4>
                     <br>
                     <p>Olá, Seu Chamado foi respondido, segue dados do chamado.</p>
                     <br>
